@@ -61,4 +61,12 @@ object Cont extends App{
     println("result is " + a)
   }
   
-}
+  def transFormed = { 
+    x0:Int => {
+      x1:Int => {
+	x2:Int => {
+	  callback:(Int => Int) => {
+	    (x0*(x1*(callback(x2))))
+	}}}}}
+
+ }
