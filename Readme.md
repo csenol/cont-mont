@@ -81,21 +81,22 @@
 ```
 
 ## Şuna çevriliyor gibi
-* fact0(3)
+* `fact0(3)`
 * Bundan emin değilim!!!
+
 ```scala
   def transFormed = { 
     x0:Int => {
       x1:Int => {
-	x2:Int => {
-	  callback:(Int => Int) => {
+        x2:Int => {
+          callback:(Int => Int) => {
 	    (x0*(x1*(callback(x2))))
 	}}}}}
 	transFormed(3)(2)(1)(x=>x)	
 ```
 
 ## Ozunde olay
-* Stack kullanmaya gerek yok. Olaylar tailde
+* Stack kullanmaya gerek yok. Olaylar tailde. Function composition ve currying
 * Daha guzel yazimi
 
 ```scala
@@ -119,6 +120,7 @@
 ## Ornek
 * Shift in sonrasi identity function
 * Reset block'undan donen deger ise fact3 un cevabi.
+
 ```scala
   val k = reset{
     val x = shift(fact3(5))
