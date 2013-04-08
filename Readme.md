@@ -97,6 +97,7 @@
 ## Ozunde olay
 * Stack kullanmaya gerek yok. Olaylar tailde
 * Daha guzel yazimi
+
 ```scala
   @tailrec
   def fact3(n: Int)(cont: Int => Int): Int = {
