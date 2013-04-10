@@ -127,7 +127,44 @@
 ```
 * `fact3` callback verelim diye kasmadik.
 
+## Client in shift ten haberi olmasin
+* Hem callback vermeyecegiz
+* Hem de client shift ile ilgilenmeyecek
 
+```scala
+  def withFile2(path:String):BufferedReader@cps[Unit] = {
+    val f = new File(path)
+    val fr = new FileReader(f)
+    val br = new BufferedReader(fr)
+    shift{k:(BufferedReader => Unit) => 
+      k(br)
+      br.close
+      fr.close 
+      println("file closed")	  
+      }
+    br
+  }
+```
+
+## Nasil cagiriyoruz
+
+* Ayni sekilde
+
+```scala
+  reset{
+    val file1 = withFile2("/tmp/hede")
+    val file2 = withFile2("/tmp/hede2")
+    val lines1 = file1.readLine
+    val lines2 = file2.readLine
+    println(lines1 + " " + lines2)
+  }
+```
+
+## CPS annotation
+* Fonksiyonumuzun icinde reset edilmemiş shift block u varsa
+* CPS annotation ile işaretliyoruz
+* Dönüş tipi contiunation in aldigi tip
+* annotated tip te continuation in dondurdugu tip.
 
 
 
